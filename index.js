@@ -28,16 +28,7 @@ app.use("/api/", require("./routes/pdfRoutes"));
 app.use("/api/upload", require("./routes/uploadRoutes"));
 app.use("/api/syllabus", syllabusRoutes);
 
-// Serve static files if React is built
-if (process.env.NODE_ENV === "production") {
-  // Serve static files from the "client/build" directory
-  app.use(express.static(path.join(__dirname, "client", "build")));
 
-  // Catch-all route to handle all other requests and return index.html
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
-}
 
 // Define the port
 const PORT = process.env.PORT || 9000;
